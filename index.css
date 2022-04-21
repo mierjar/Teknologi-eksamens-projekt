@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family:'rubik';
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 10fr 1fr;
+    background-size: cover;
+    overflow: hidden;
+}
+main{
+    height: 100vh;
+    display: grid;
+    grid-auto-flow: column;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    background-color: white;
+}
+
+.map{
+    height: 100%;
+    width: 100%;
+    top: 0;
+    padding: auto;
+    margin: auto;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+}
+
+canvas{
+    position: absolute;
+}
+
+.page{
+    width: 100vw;
+    scroll-snap-align: center;
+    padding: 1.5rem;
+    display: grid;
+}
+
+.anbe{
+    display: grid;
+    place-items: center;
+    grid-template-columns: 7fr 8fr;
+    width: 80vw;
+    height: 2rem;
+    font-size: 0.8rem;
+    
+}
+
+.anbefalinger{
+    background-color: white;
+    border: 0.5px solid gray ;
+    border-radius: 1rem;
+    padding: .25rem;
+    margin: 0;
+}
+
+.narmeste{
+    background-color: white;
+    border: 0.5px solid gray ;
+    border-radius: 1rem;
+    padding: .25rem;
+}
+
+#searchbar{
+    z-index: 5;
+    width: 100vw;
+    height: 10vh;
+    transition: all .3s ease-in-out;
+    position: absolute;
+    top: 0;
+    margin-top: 20px;
+}
+
+input{
+    color: black;
+    width: 87vw;
+    font-size: 1.1rem;
+    border-radius: 10rem;
+    border: 1px solid grey;
+    outline: 1rem;
+    padding: .5rem;
+    position: relative;
+    place-items: center;
+}
+
+.buttons{
+    background-color: white;
+    z-index: 6;
+    height: 6vh;
+    display: grid;
+    place-items: center;
+    grid-template-columns: 10fr 1fr 10fr;
+    position: absolute;
+    bottom: 1.2rem;
+}
+
+button{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    border: 1rem grey;
+}
