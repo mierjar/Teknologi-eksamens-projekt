@@ -13,33 +13,41 @@
 <body>
     <main>
         <div class="page">
-            <div class="page1">
-                <div id="map" class="map"></div>
-                <div id="searchbar">
-                    <input type="text" placeholder="Event name or content" id="input">
-                    <div class="anbe">
-                        <div class="anbefalinger">Anbefalinger til dig</div>
-                        <div class="narmeste">Nærmeste badested</div>
+            <div class="page1" id="page1">
+
+                <div id="searchbox">
+                    <div id="searchbar">
+                        <input type="text" placeholder="Søg her" id="input">
+                        <div class="anbe">
+                            <a href="#page2" style="text-decoration: none;"><div class="anbefalinger" id="anbefaling_btn">Anbefalinger til dig</div></a>
+                        </div>
                     </div>
                 </div>
+
+                <div id="map" class="map"></div>
+
             </div>
         </div>
 
          <div class="page">
-             <div class="page2">
+             <div class="page2" id="page2">
                 <div id="searchbar2">
-                    <input type="text" placeholder="Event name or content" id="input2">
+                    <input type="text" placeholder="Søg her" id="input2">
+                </div>
+                <div class="cardholder">
+                    
                 </div>
              </div>
          </div>
          <div class="page">
-             <div class="page3">
+             <div class="page3" id="page3">
              </div>
             </div>
             <div class="buttons">
-                <button></button>
-                <button></button>
-                <button></button>
+                <a href="#page1"><div id="button1"></div></a>
+                <a href="#page2"><div id="button2"></div></a>
+                <a href="#page3"><div id="button3"></div></a>
+
             </div>
     </main>
     <script src="index.js"></script>

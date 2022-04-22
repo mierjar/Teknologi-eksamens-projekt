@@ -1,6 +1,16 @@
 let data
+let anbefalingBtn, narmesteBtn
+let button1, button2, button3
 
 function setup(){
+    noCanvas()
+    //referencer til html
+    anbefalingBtn = select('#anbefaling_btn')
+    button1 = select('#button1')
+    button2 = select('#button2')
+    button3 = select('#button3')
+    //html_interaktion
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWxiYXRyb3NzZGsiLCJhIjoiY2wyN2NlcWVlMDB1MzNscWhicTh6ZWh2aCJ9.dUMy9S_emcOhW4OHrqONQg';
 
     const map = new mapboxgl.Map({
@@ -21,39 +31,84 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYWxiYXRyb3NzZGsiLCJhIjoiY2wyN2NlcWVlMDB1MzNsc
     .then( res => res.json() )
     //when parse done, json object as variable.
     .then( json => {
-        console.log(json)
+        //console.log(json)
         data = json.badesteder
 
     json.badesteder.map( badesteder => {
         newMarker(badesteder)
+        newCard(badesteder)
     })
 })
 
 
-
-const newMarker = (badesteder) => {
-    //console.log(badesteder.coordinates)
-    var count = Object.keys(badesteder).length;
-
-    //console.log(count)
-
-    for(var i = 0; i < count; i++) {
-        var obj = badesteder;
-
-        let coords = obj.coordinates
-        let coordsarray = coords.split(',')
-
-        const marker2 = new mapboxgl.Marker()
-        marker2.setLngLat(coordsarray)
-        marker2.addTo(map)
-    }
+const newMarker = (badested) => {
     
+    let coords = badested.coordinates
+    let coordsarray = coords.split(',')
+    console.log(coordsarray)
+    const marker = new mapboxgl.Marker()
+    marker.setLngLat([coordsarray[1],coordsarray[0]])
+    marker.addTo(map)
+
+    marker.getElement().addEventListener('click', () => {
+        alert(badested.name);
+      })
+
+}
+
+const newCard = (badesteder) => {
+
+    //main card structure
+    let card = createDiv('')
+    let heading = createElement('h2')
+    let indhold = createDiv('')
+
+    card.addClass('card')
+    heading.addClass('heading')
+
+
+    //renlighed
+    let progressholder = createDiv('')
+    let progress = createDiv('')
+
+    progressholder.addClass('progressholder')
+    progress.addClass('progress')
+
+    progress.style('width', badesteder.renlighed+'%')
+    
+    progressholder.child(progress)
+    indhold.child(progressholder)
+
+
+    //mennesker
+    let progressholder1 = createDiv('')
+    let progress1 = createDiv('')
+
+    progressholder1.addClass('progressholder')
+    progress1.addClass('progress')
+
+    progress1.style('width', badesteder.mennesker+'%')
+    
+    progressholder1.child(progress1)
+    indhold.child(progressholder1)
+
+
+    //indhold
+    heading.html(badesteder.name)
+    card.child(heading)
+    card.child(indhold)
+
+
+    cardholder = select('.cardholder')
+    cardholder.child(card)
 }
 
 
-function draw(){
+/*function draw(){
     select('.anbefalinger').mouseReleased()
-}
+}*/
+
+
 
 
 
